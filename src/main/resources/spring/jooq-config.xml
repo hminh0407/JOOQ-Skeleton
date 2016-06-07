@@ -17,7 +17,7 @@
         <property name="idleTimeout" value="${db.idleTimeout}" />
         <property name="driverClassName" value="${db.driver}" />
         <property name="jdbcUrl" value="${db.url}" />
-        <property name="username" value="${db.user}" />
+        <property name="username" value="${db.username}" />
         <property name="password" value="${db.password}" />
     </bean>
 

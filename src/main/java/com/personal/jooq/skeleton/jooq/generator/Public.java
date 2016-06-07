@@ -5,16 +5,15 @@ package com.personal.jooq.skeleton.jooq.generator;
 
 
 import com.personal.jooq.skeleton.jooq.generator.tables.Author;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.Generated;
-
+import com.personal.jooq.skeleton.jooq.generator.tables.Book;
 import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
+
+import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -30,7 +29,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1443006804;
+    private static final long serialVersionUID = -484637274;
 
     /**
      * The reference instance of <code>public</code>
@@ -41,6 +40,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.author</code>.
      */
     public final Author AUTHOR = com.personal.jooq.skeleton.jooq.generator.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>public.book</code>.
+     */
+    public final Book BOOK = com.personal.jooq.skeleton.jooq.generator.tables.Book.BOOK;
 
     /**
      * No further instances allowed
@@ -67,6 +71,7 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Author.AUTHOR);
+            Author.AUTHOR,
+            Book.BOOK);
     }
 }

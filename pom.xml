@@ -21,6 +21,8 @@
         <assertj-core.version>3.4.1</assertj-core.version>
         <assertj-db.version>1.1.1</assertj-db.version>
         <dbsetup.version>2.0.0</dbsetup.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
 
         <!-- Database driver -->
         <mysql-connector-java.version>5.1.34</mysql-connector-java.version>
@@ -29,11 +31,11 @@
         <!-- Plugins properties -->
         <!--<db.driver>com.mysql.jdbc.Driver</db.driver>
         <db.url>jdbc:mysql://localhost:3306/flyway_test</db.url>
-        <db.user>root</db.user>
+        <db.username>root</db.username>
         <db.password>sosliveearth</db.password>-->
         <db.driver>org.postgresql.Driver</db.driver>
         <db.url>jdbc:postgresql://localhost:5432/flyway_test</db.url>
-        <db.user>postgres</db.user>
+        <db.username>postgres</db.username>
         <db.password>sosliveearth</db.password>
     </properties>
 
@@ -103,6 +105,23 @@
             <version>${HikariCP.version}</version>
         </dependency>
 
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
 
         <!-- Test -->
         <dependency>
@@ -170,7 +189,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0.0</version>
@@ -187,7 +206,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <!-- Flyway as db version control -->
             <plugin>
@@ -207,7 +226,7 @@
                 to prevent Flyway from looking for our migration scripts only on the classpath -->
                 <configuration>
                     <url>${db.url}</url>
-                    <user>${db.user}</user>
+                    <user>${db.username}</user>
                     <password>${db.password}</password>
                     <locations>
                         <location>filesystem:src/main/resources/db/migration</location>
@@ -253,7 +272,7 @@
                     <jdbc>
                         <driver>${db.driver}</driver>
                         <url>${db.url}</url>
-                        <user>${db.user}</user>
+                        <user>${db.username}</user>
                         <password>${db.password}</password>
                     </jdbc>
                     <!-- Generator parameters -->
@@ -281,6 +300,7 @@
                             </forcedTypes>
                         </database>
                         <generate>
+                            <pojos>false</pojos>
                             <daos>false</daos>
                             <interfaces>false</interfaces>
                             <springAnnotations>false</springAnnotations>

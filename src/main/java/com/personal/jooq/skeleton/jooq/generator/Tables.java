@@ -5,6 +5,7 @@ package com.personal.jooq.skeleton.jooq.generator;
 
 
 import com.personal.jooq.skeleton.jooq.generator.tables.Author;
+import com.personal.jooq.skeleton.jooq.generator.tables.Book;
 
 import javax.annotation.Generated;
 
@@ -26,4 +27,9 @@ public class Tables {
      * The table <code>public.author</code>.
      */
     public static final Author AUTHOR = com.personal.jooq.skeleton.jooq.generator.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>public.book</code>.
+     */
+    public static final Book BOOK = com.personal.jooq.skeleton.jooq.generator.tables.Book.BOOK;
 }

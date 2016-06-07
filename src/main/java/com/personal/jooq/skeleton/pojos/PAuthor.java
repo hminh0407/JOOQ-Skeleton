@@ -1,11 +1,12 @@
 package com.personal.jooq.skeleton.pojos;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * Created by minhpham on 6/5/16.
  */
-public class PAuthor {
+public class PAuthor implements Serializable{
     private Integer id;
     private String firstName;
     private String lastName;

@@ -5,12 +5,14 @@ package com.personal.jooq.skeleton.jooq.generator;
 
 
 import com.personal.jooq.skeleton.jooq.generator.tables.Author;
+import com.personal.jooq.skeleton.jooq.generator.tables.Book;
 import com.personal.jooq.skeleton.jooq.generator.tables.records.AuthorRecord;
-
-import javax.annotation.Generated;
-
+import com.personal.jooq.skeleton.jooq.generator.tables.records.BookRecord;
+import org.jooq.ForeignKey;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
+
+import javax.annotation.Generated;
 
 
 /**
@@ -37,11 +39,13 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AuthorRecord> PK_T_AUTHOR = UniqueKeys0.PK_T_AUTHOR;
+    public static final UniqueKey<BookRecord> PK_T_BOOK = UniqueKeys0.PK_T_BOOK;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<BookRecord, AuthorRecord> BOOK__FK_T_BOOK_AUTHOR_ID = ForeignKeys0.BOOK__FK_T_BOOK_AUTHOR_ID;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -49,5 +53,10 @@ public class Keys {
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AuthorRecord> PK_T_AUTHOR = createUniqueKey(Author.AUTHOR, "pk_t_author", Author.AUTHOR.ID);
+        public static final UniqueKey<BookRecord> PK_T_BOOK = createUniqueKey(Book.BOOK, "pk_t_book", Book.BOOK.ID);
+    }
+
+    private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<BookRecord, AuthorRecord> BOOK__FK_T_BOOK_AUTHOR_ID = createForeignKey(com.personal.jooq.skeleton.jooq.generator.Keys.PK_T_AUTHOR, Book.BOOK, "book__fk_t_book_author_id", Book.BOOK.AUTHOR_ID);
     }
 }

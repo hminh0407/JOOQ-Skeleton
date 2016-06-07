@@ -4,14 +4,13 @@
 package com.personal.jooq.skeleton.jooq.generator;
 
 
+import org.jooq.Schema;
+import org.jooq.impl.CatalogImpl;
+
+import javax.annotation.Generated;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.annotation.Generated;
-
-import org.jooq.Schema;
-import org.jooq.impl.CatalogImpl;
 
 
 /**

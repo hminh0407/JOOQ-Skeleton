@@ -23,20 +23,12 @@
         <dbsetup.version>2.0.0</dbsetup.version>
         <slf4j.version>1.7.21</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
+        <sfm.version>2.9.5</sfm.version>
 
         <!-- Database driver -->
         <mysql-connector-java.version>5.1.34</mysql-connector-java.version>
         <postgresql.version>9.4.1208</postgresql.version>
 
-        <!-- Plugins properties -->
-        <!--<db.driver>com.mysql.jdbc.Driver</db.driver>
-        <db.url>jdbc:mysql://localhost:3306/flyway_test</db.url>
-        <db.username>root</db.username>
-        <db.password>sosliveearth</db.password>-->
-        <db.driver>org.postgresql.Driver</db.driver>
-        <db.url>jdbc:postgresql://localhost:5432/flyway_test</db.url>
-        <db.username>postgres</db.username>
-        <db.password>sosliveearth</db.password>
     </properties>
 
     <dependencies>
@@ -86,13 +78,14 @@
             <artifactId>jooq-codegen</artifactId>
             <version>${jooq.version}</version>
         </dependency>
+        <dependency><!-- Use Simple Flat Mapper for auto mapping between JOOQ record and pojo object -->
+            <groupId>org.simpleflatmapper</groupId>
+            <artifactId>sfm-jooq</artifactId>
+            <version>${sfm.version}</version>
+        </dependency>
+
 
         <!-- Database -->
-        <!--<dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -189,7 +182,7 @@
                 </configuration>
             </plugin>
 
-            <!--<plugin>
+            <plugin><!-- Support reading properties from file -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0.0</version>
@@ -206,7 +199,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <!-- Flyway as db version control -->
             <plugin>

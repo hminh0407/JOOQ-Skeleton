@@ -8,11 +8,12 @@ import com.personal.jooq.skeleton.jooq.generator.tables.Author;
 import com.personal.jooq.skeleton.jooq.generator.tables.Book;
 import com.personal.jooq.skeleton.jooq.generator.tables.records.AuthorRecord;
 import com.personal.jooq.skeleton.jooq.generator.tables.records.BookRecord;
+
+import javax.annotation.Generated;
+
 import org.jooq.ForeignKey;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
-
-import javax.annotation.Generated;
 
 
 /**

@@ -7,6 +7,7 @@ import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
 import org.jooq.impl.DefaultExecuteListenerProvider;
+import org.sfm.jooq.SfmRecordMapperProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -81,6 +82,9 @@ public class JooqConfig {
         String sqlDialectName = env.getProperty(JOOQ_SQL_DIALECT);
         SQLDialect dialect = SQLDialect.valueOf(sqlDialectName);
         jooqConfiguration.set(dialect);
+
+        // Use Simple Flat Mapper for auto mapping between JOOQ record and pojo object
+        jooqConfiguration.set(new SfmRecordMapperProvider());
 
         return jooqConfiguration;
     }

@@ -8,6 +8,8 @@ import com.ninja_squad.dbsetup.generator.ValueGenerators;
 import com.ninja_squad.dbsetup.operation.Operation;
 import com.personal.jooq.skeleton.config.ApplicationConfig;
 import com.personal.jooq.skeleton.daos.BookDao;
+import com.personal.jooq.skeleton.pojos.PBook;
+import org.assertj.core.api.Assertions;
 import org.jooq.DSLContext;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,6 +21,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
+
+import java.util.List;
 
 import static com.personal.jooq.skeleton.jooq.generator.Tables.BOOK;
 import static org.junit.Assert.assertEquals;
@@ -74,5 +78,11 @@ public class BookDaoImplTest {
 
         assertEquals(5, dsl.fetchCount(BOOK));
         assertTrue(rollback);
+    }
+
+    @Test
+    public void testFetchManyByAuthorId() {
+        List<PBook> books = bookDao.fetchManyByAuthorId(3);
+        Assertions.assertThat(books).hasSize(1);
     }
 }

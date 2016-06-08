@@ -1,10 +1,20 @@
 package com.personal.jooq.skeleton.jooq.daos;
 
 import com.personal.jooq.skeleton.daos.BookDao;
+import com.personal.jooq.skeleton.jooq.generator.tables.records.BookRecord;
+import com.personal.jooq.skeleton.pojos.PBook;
 import org.jooq.DSLContext;
+import org.jooq.ResultQuery;
+import org.sfm.jdbc.JdbcMapper;
+import org.sfm.jdbc.JdbcMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.personal.jooq.skeleton.jooq.generator.Tables.BOOK;
 
@@ -28,4 +38,10 @@ public class BookDaoImpl implements BookDao {
                     .set(BOOK.TITLE, title)
                     .execute();
     }
+
+    @Override
+    public List<PBook> fetchManyByAuthorId(int authorId) {
+        return dslContext.selectFrom(BOOK).where(BOOK.AUTHOR_ID.eq(authorId)).fetchInto(PBook.class);
+    }
+
 }

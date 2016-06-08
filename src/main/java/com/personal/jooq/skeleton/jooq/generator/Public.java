@@ -6,14 +6,16 @@ package com.personal.jooq.skeleton.jooq.generator;
 
 import com.personal.jooq.skeleton.jooq.generator.tables.Author;
 import com.personal.jooq.skeleton.jooq.generator.tables.Book;
-import org.jooq.Catalog;
-import org.jooq.Table;
-import org.jooq.impl.SchemaImpl;
 
-import javax.annotation.Generated;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Generated;
+
+import org.jooq.Catalog;
+import org.jooq.Table;
+import org.jooq.impl.SchemaImpl;
 
 
 /**

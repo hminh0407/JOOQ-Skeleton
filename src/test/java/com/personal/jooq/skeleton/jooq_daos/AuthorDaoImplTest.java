@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.sql.DataSource;
 
 import static com.personal.jooq.skeleton.jooq.generator.Tables.AUTHOR;
+import static com.personal.jooq.skeleton.jooq.generator.Tables.BOOK;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -33,7 +34,7 @@ public class AuthorDaoImplTest {
     @Autowired
     DataSource dataSource;
 
-    private static final Operation DELETE_ALL = Operations.deleteAllFrom(AUTHOR.getName());
+    private static final Operation DELETE_ALL = Operations.deleteAllFrom(BOOK.getName(), AUTHOR.getName());
 
     private static final Operation DEFAULT_INSERT = Operations.insertInto(AUTHOR.getName())
             .withGeneratedValue(AUTHOR.ID.getName(), ValueGenerators.sequence().startingAt(1))

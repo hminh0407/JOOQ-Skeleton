@@ -21,6 +21,8 @@ import javax.sql.DataSource;
 
 /**
  * Created by minhpham on 6/6/16.
+ * Read article to have more detail about the configuration:
+ * http://www.petrikainulainen.net/programming/jooq/using-jooq-with-spring-configuration/
  */
 @Configuration
 @EnableTransactionManagement
@@ -84,6 +86,7 @@ public class JooqConfig {
         jooqConfiguration.set(dialect);
 
         // Use Simple Flat Mapper for auto mapping between JOOQ record and pojo object
+        // https://github.com/arnaudroger/SimpleFlatMapper/wiki/SFM-Integration-in-Jooq
         jooqConfiguration.set(new SfmRecordMapperProvider());
 
         return jooqConfiguration;

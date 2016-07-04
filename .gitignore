@@ -1,4 +1,11 @@
+# idea files
 .idea/
 JOOQSkeleton.iml
+
+# vagrant files
+.vagrant/
+
+# app temporary files
 target/
 logs/
+

@@ -31,6 +31,7 @@ public class BookDaoImpl implements BookDao {
     public void create(int id, int authorId, String title) {
         // This method has a "bug". It creates the same book twice. The second insert
         // should lead to a constraint violation, which should roll back the whole transaction
+        // This method is used to test Spring transaction with JOOQ configuration
         for (int i = 0; i < 2; i++)
             dslContext.insertInto(BOOK)
                     .set(BOOK.ID, id)

@@ -1,0 +1,29 @@
+VAGRANTFILE_API_VERSION = "2"
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+DOCKER_HOST_VAGRANTFILE = "./vagrant/DockerHostVagrantfile"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|  
+
+  # Postgres
+  # To run: vagrant up postgres
+  # To enter a running container: docker exec -it jooq-postgres bash
+  config.vm.define 'postgres' do |m|
+    m.vm.provider :docker do |d|
+      d.image = 'postgres'
+      d.name = 'jooq-postgres'
+      d.ports = ['5432:5432']
+      d.create_args = ['-h', 'postgres'] # Additional arguments to pass to docker run when the container is started.
+      d.env    = {
+        'POSTGRES_USER' => 'root',
+        'POSTGRES_PASSWORD' => 'root'
+      }
+      # Store data on host file system to avoid losing data when removing container
+      d.volumes = ["/var/vagrant/jooq/data:/var/lib/postgresql/data"]
+      d.remains_running = true
+      d.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+    end
+    # run shell provision after container started
+    config.vm.provision "shell", path: "vagrant/postgres/postgres.sh"
+  end
+
+end
